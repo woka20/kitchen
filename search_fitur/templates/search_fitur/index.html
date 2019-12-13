@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  {% else %}
+  <p>You are not logged in</p>
+{% endif %}
+{% block content %}
+<div class="wrap-index">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6">
+        <div class="index-header--img">
+          <!-- jumbotron -->
+          <img class="rounded" style="min-width: 40em; max-width: 100%;" src="https://picsum.photos/500/300" alt="">
+        </div>
+      </div>
+      <div class="col-6 align-items-center">
+        <div class="wrap-header--summary">
+          <div class="header-summary summary-text text-center">
+            <a href="#" class="font-style-4 text-center">
+              Every Which Way to Make a Chocolate Cake
+            </a>
+          </div>
+          <div class="header-summary summary-text-small text-center">
+            There's not only one chocolate cake recipe
+          </div>
+          <!-- readmore -->
+          <div class="header-summary readmore text-center">
+            <a href="#" class="font-style-2"> Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- wrap searchbar -->
+  <div class="wrap-searchbar-back">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2">
+          <!-- none -->
+        </div>
+        <div class="col-8">
+          <div class=" d-flex align-items-center justify-content-center flex-column">
+            <div class="searchbar-text text-center font-style-4">
+              Find recipes and more
+            </div>
+            <div class="searchbar-main">
+              <!-- searchbar -->
+                <div class="wrap-search">
+                    <div class="container">
+                        <div style="width:45em; height:2em;" id="header-search">
+                            <form class='form-group' action="{% url 'search_fitur:cari' %}" method="GET" value="{{request.GET.q}}">
+                                <div class="input-group-prepend">  
+                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                                <input  class="form-control" list="title" type="text" name="q" value="{{request.GET.q}}" placeholder="What's cooking?"/>
+                                <datalist id="title">
+                                {% for i in blogs %}
+                                    <option value="{{i.title}}">
+                                {% endfor %}
+                                </datalist>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap-search">
+                  <div class="resultsearch font-style-3 text-center">
+                  <!-- logic search -->
+                    {% if request.GET.q != '' %}
+                      {% if results %}
+                        Results for <b>{{ request.GET.q }}</b>
+                        <br/><br/>
+                        {% for result in results %}
+                          {{result.title}}
+                          <br/>
+                          {{result.konten}}
+                          <br/>
+                        {% endfor %}
+                      {% else %}
+                        <!-- No search results for this query -->
+                      {% endif %} 
+                    {% endif %}
+                  </div>
+                </div>
+            </div>
+            <div class="searchbar-advance text-right">
+              <a href="#" class="nounderline text-uppercase font-style-2">advance search</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <!-- none -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap-index--minicontent">
+    <div class="container">
+      <div class="row d-flex justify-content-between">
+        <!-- looop -->
+        <div class="col-5">
+          <div class="wrap-minicontent">
+            <div class="image-minicontent">
+              <img class="rounded zoom" style="min-width:100%;max-width:100%; padding: 0.1em" src="https://picsum.photos/300/300" alt="">
+            </div>
+            <div class="minicontent-title font-style-2" style="margin: 2em 0;">
+              Chicken
+            </div>
+            <div class="wrap-user--icon">
+              <ul class="list-unstyled d-flex flex-row" >
+                <li>
+                    <img class="rounded-circle" style="max-width: 50px; max-height: 50px;" src="https://picsum.photos/300/300" alt="">
+                </li>
+                <li class="d-flex flex-column">
+                    <span class="font-muli user-info--name" >first_name last_name</span>
+                    <span class="font-muli user-info--title">user.title</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row"></div>
+    </div>
+  </div>
+</div>
+  
+
+{% endblock %}
