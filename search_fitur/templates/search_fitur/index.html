@@ -1,0 +1,56 @@
+{% extends 'base/base.html'%}
+{% block content %}
+        <br/>
+       <!-- ini fitur search -->
+       <div class="wrap-search">
+         <div class="container">
+           <div style="width:900px; height:90px" id="header-search">
+             <form action="{% url 'search_fitur:cari' %}" method="GET" value="{{request.GET.q}}">
+               <div class="input-group-prepend">  
+                 <span class="input-group-text" id="basic-addon1"><img src=""></span>
+                 <input  class="form-control" list="title" type="text" name="q" value="{{request.GET.q}}" placeholder="What's cooking?"/>
+                 <datalist id="title">
+                 {% for i in blogs %}
+                   <option value="{{i.title}}">
+                 {% endfor %}
+                 </datalist>
+                </div>
+             </form>
+           </div>
+          </div>
+      </div>
+
+
+        <!-- ini nampilin preview blog di homepage -->
+        <div class="wrap-blog">
+          <div class="container">
+           {% for p in blogs %}
+            <img src={{p.gambar}}/>
+            <p>{{p.title}}</p>
+            <p>{{p.author}}</p>
+      
+            <a href="{{p.id}}">Details</a>
+            </br>
+           {%endfor%}
+          </div>
+        </div>
+
+
+
+        <!-- logic search -->
+        {% if request.GET.q != '' %}
+        {% if results %}
+        <h1>Results for <b>{{ request.GET.q }}</b></h1>
+        <br/><br/>
+        {% for result in results %}
+        {{result.title}}
+        <br/>
+        {{result.konten}}
+        <br/>
+        {% endfor %}
+        {% else %}
+        No search results for this query
+        {% endif %} 
+        {% endif %}
+{% endblock %}
+
