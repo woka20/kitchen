@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Kitchen Stories{% endblock %}</title>
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%static 'js/bootstrap.min.js'%}">
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<link rel="stylesheet" href="{%static 'css/style.css'%}">
+
+<!------------------------------------------- header ------------------------------------------->
+<header>
+<div class="wrap-container--header">
+        <div class="container">
+            <div class="row align-items-center blok-header">
+                <div class="col-md-2 align-items-center justify-content-start company-name">
+                    <a href="{%url 'search_fitur:index'%}"><img style="max-width: 100%;" src="{% static 'img/kitchen_stories.jpg'%}" alt=""></a>
+                </div>
+                <div class="col-md-6">
+                    <div class="header-nav">
+                        <ul class="header-nav__list list-unstyled">  
+                            <li> 
+                                <a href="#">Recipe</a>
+                            </li>
+                            <li> 
+                                <a href="#">Stories</a>
+                            </li>
+                            <li> 
+                                <a href="#">Categories</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="wrap-navbar--left d-flex flex-row justify-content-end">
+                        <div class="navbar-left border-right"><i class="fa fa-search"></i></div>
+                        {% if user.is_authenticated %}
+                        <div class="navbar-left">
+                            <a href="{% url 'logout' %}">Logout</a>
+                        </div>
+                        {% else %}
+                        <div class="navbar-left">
+                            <a href="{% url 'login' %}">Login</a>
+                        </div>
+                        <div class="navbar-left border-left">
+                            <a href="{% url 'search_fitur:register' %}">Signup</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</header>
+<!------------------------------------------- EOF header ------------------------------------------->
+<body>
+    <div class="wrap-base--content">
+        {% block content %}
+        {% endblock %}        
+    </div>
+
+
+
+    <!-- bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+    <div class="wrap-base--footer">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-11">
+                    <div class="row wrap-footer d-flex flex-row justify-content-between">
+                        <div class="col-4">
+                            <!-- connect -->
+                            <div class="row border-right d-flex flex-column part-footer">
+                                <div class="wrap-follow-us">
+                                    <div class="join-text font-style-3">
+                                        Connect
+                                    </div>
+                                </div>
+                                <div class="wrap-follow-us">
+                                    <div class="font-style-2">Follow us</div>
+                                    <div class="wrap-icon-follow d-flex flex-row justify-content-">
+                                        <ul class="d-flex list-unstyled" >
+                                            <li><a href="" class="nounderline"><i class="fa fa-facebook-square" style="font-size:24px"></i></a></li>
+                                            <li><a href="" class="nounderline"><i class="fa fa-instagram" style="font-size:24px"></i></a></li>
+                                            <li><a href="" class="nounderline"><i class="fa fa-youtube" style="font-size:24px"></i></a></li>
+                                            <li><a href="" class="nounderline"><i class="fa fa-twitter" style="font-size:24px"></i></a></li>
+                                            <li><a href="" class="nounderline"><i class="fa fa-pinterest" style="font-size:24px"></i></a></li>
+                                        </ul>
+                                        
+                                    </div>
+                                </div>
+                                <div class="wrap-follow-us">
+                                    <div class="font-style-2">Subscribe to our Newsletter</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <!-- join -->
+                            <div class="row border-right d-flex flex-column part-footer">
+                                <div class="join-text font-style-3">
+                                    Join
+                                </div>
+                                <ul class="list-unstyled">
+                                    <a href="#" class="nounderline"><li>Recipe API</li></a>
+                                    <a href="#" class="nounderline"><li>Jobs - we are hiring!</li></a>
+                                    <a href="#" class="nounderline"><li>About us</li></a>
+                                    <a href="#" class="nounderline"><li>Team</li></a>
+                                    <a href="#" class="nounderline"><li>Engineering blog</li></a>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <!-- find -->
+                            <div class="row d-flex flex-column part-footer">
+                                <div class="join-text font-style-3">
+                                    Find
+                                </div>
+                                <div class="footer-list--down">
+                                    <ul class="list-unstyled">
+                                        <li><a href="#" class="nounderline">Recipe Creation FAQs</li></a>
+                                        <li><a href="#" class="nounderline">Imprint</li></a>
+                                        <li><a href="#" class="nounderline">Terms of use</li></a>
+                                        <li><a href="#" class="nounderline">Privacy</li></a>
+                                        <li><a href="#" class="nounderline">Contact</li></a>
+                                        <li><a href="#" class="nounderline">Press Area</li></a>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</html>
