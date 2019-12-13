@@ -1,0 +1,17 @@
+{% extends 'base/base.html'%}
+{% block content %}
+
+<div class="wrap-cat2">
+    <div class="container">
+        {%for i in results%}
+          <div>
+            <img width="300px" src="{{i.gambar}}"/>"
+            <p>{{i.title}}</p>
+            <p><strong>{{i.author}}</strong></p>
+             <p>{{i.konten}}</p>
+          </div>
+        {%endfor%}
+    </div>
+</div>
+
+{% endblock %}
