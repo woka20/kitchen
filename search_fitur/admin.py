@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Komen, User
+from .models import Post, Komen, User, Profile
 # from ckeditor.widgets import CKEditorWidget
 
 
@@ -17,4 +17,4 @@ from .models import Post, Komen, User
 # Register your models here.
 admin.site.register(Post)
 admin.site.register(Komen)
-admin.site.register(User)
+admin.site.register(Profile)

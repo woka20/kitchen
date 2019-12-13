@@ -14,7 +14,7 @@
       <div class="col-6">
         <div class="index-header--img">
           <!-- jumbotron -->
-          <img class="rounded" style="min-width: 40em; max-width: 100%;" src="https://picsum.photos/500/300" alt="">
+          <img style="min-width: 40em; max-width: 100%;" src="https://picsum.photos/500/300" alt="">
         </div>
       </div>
       <div class="col-6 align-items-center">
@@ -54,7 +54,7 @@
                         <div style="width:45em; height:2em;" id="header-search">
                             <form class='form-group' action="{% url 'search_fitur:cari' %}" method="GET" value="{{request.GET.q}}">
                                 <div class="input-group-prepend">  
-                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                                <span class="input-group-text" id="basic-addon1"><img src=""></span>
                                 <input  class="form-control" list="title" type="text" name="q" value="{{request.GET.q}}" placeholder="What's cooking?"/>
                                 <datalist id="title">
                                 {% for i in blogs %}
@@ -80,7 +80,7 @@
                           <br/>
                         {% endfor %}
                       {% else %}
-                        <!-- No search results for this query -->
+                        No search results for this query
                       {% endif %} 
                     {% endif %}
                   </div>
@@ -98,33 +98,7 @@
     </div>
   </div>
   <div class="wrap-index--minicontent">
-    <div class="container">
-      <div class="row d-flex justify-content-between">
-        <!-- looop -->
-        <div class="col-5">
-          <div class="wrap-minicontent">
-            <div class="image-minicontent">
-              <img class="rounded zoom" style="min-width:100%;max-width:100%; padding: 0.1em" src="https://picsum.photos/300/300" alt="">
-            </div>
-            <div class="minicontent-title font-style-2" style="margin: 2em 0;">
-              Chicken
-            </div>
-            <div class="wrap-user--icon">
-              <ul class="list-unstyled d-flex flex-row" >
-                <li>
-                    <img class="rounded-circle" style="max-width: 50px; max-height: 50px;" src="https://picsum.photos/300/300" alt="">
-                </li>
-                <li class="d-flex flex-column">
-                    <span class="font-muli user-info--name" >first_name last_name</span>
-                    <span class="font-muli user-info--title">user.title</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row"></div>
-    </div>
+    div
   </div>
 </div>
   
